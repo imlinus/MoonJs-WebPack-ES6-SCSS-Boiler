@@ -12,4 +12,4 @@ Production: `npm run prod`
 GL & HF
 
 Contributor
-- (ghstahl)[https://github.com/ghstahl]
+- [ghstahl](https://github.com/ghstahl)
