@@ -2,7 +2,7 @@ import Moon from 'moonjs'
 
 export const Logo = Moon.component('logo', {
   data: {
-    branding: 'Devs'
+    branding: 'Boiler'
   },
   template: `<div class="logo">
                 <a href="#">

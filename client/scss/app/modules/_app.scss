@@ -3,6 +3,6 @@
   @include margin($header-height 0 0 0);
 
   .content {
-    @include padding(40px);
+    @include padding(1.5rem);
   }
 }
