@@ -1,0 +1,29 @@
+.ripple {
+  overflow: hidden;
+  @extend %pointer-events-none;
+  @include position(absolute, 0, 0, 0, 0);
+  @include prefix(transform, translateZ(0));
+
+  span {
+    background: white;
+    backface-visibility: hidden;
+    @include position();
+    @include alpha(0.25);
+    @include animation(ripple 1.25s forwards);
+    @include prefix(transform, scale(0.1));
+    @include prefix(clip-path, polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%));
+  }
+
+  @for $i from 0 to 5 {
+    &:nth-child(#{$i}) span {
+      @include prefix(transform, scale(0.1) rotate(1#{$i}0deg));
+    }
+  }
+} // .ripple
+
+@include keyframes(ripple) {
+  100% {
+    @include alpha(0);
+    @include prefix(transform, scale(1.25) rotate(0deg));
+  }
+}

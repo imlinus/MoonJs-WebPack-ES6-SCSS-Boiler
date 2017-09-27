@@ -1,0 +1,41 @@
+// +-------------------------------------------------------------------------+
+// | Images                                                                  |
+// +-------------------------------------------------------------------------+
+
+img {
+  display: block;
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  background: #fff;
+  box-shadow: inset 0 0 1px #999;
+
+  &:before {
+    color: #999;
+    content: "Broken image of " attr(alt) " (" attr(src) ")";
+    display: block;
+    height: auto;
+    font-family: $main-font;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    @include padding(35px 5px 20px 5px);
+    @include font-size(0.75rem);
+  }
+
+  &:after {
+    color: #999;
+    display: block;
+    position: relative;
+    left: 1px;
+    width: calc(100% - 2px);
+    height: auto;
+    line-height: 1;
+    background: #fff;
+    content: "\2612";
+    text-align: center;
+    @include rem(top, -35px);
+    @include padding(10px 5px);
+    @include font-size(2rem);
+  }
+}

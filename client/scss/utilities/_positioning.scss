@@ -1,0 +1,17 @@
+// Mixin for the repetitive position code
+// Basic usage: @include position(absolute, 0, null, null, 0);
+// order: position, top, right, bottom, left
+
+@mixin position(
+  $position: absolute, 
+  $top: null, 
+  $right: null, 
+  $bottom: null, 
+  $left: null
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}

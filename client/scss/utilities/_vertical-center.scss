@@ -1,0 +1,71 @@
+// Mixin for vertical and horizontal centerin
+// Requires a declared height + position: relative on parent
+// usage:
+// .box {
+//    height: 50%;
+//    @include vertical-center-1;
+// }
+
+@mixin vertical-center-1 {
+  @include position(absolute, 0, 0, 0, 0);
+  margin: auto;
+}
+
+// Same for this mixin, also requires width, height + position: relative on parent.
+// usage:
+// .box {
+//   width: 400px;
+//   height: 400px;
+//   @include vertical-center-2(400px, 400px);
+// }
+
+@mixin vertical-center-2(
+  $width,
+  $height
+) {
+  @include position(absolute, 50%, null, null, 50%);
+  width: $width;
+  height: $height;
+  margin-top: -$height / 2;
+  margin-left: -$width / 2;
+}
+
+// Mixin that doesn't require any width or height set.
+// This mixin won't work for IE-8 users
+// usage
+// .box {
+//    @include vertical-center-3;
+// }
+
+@mixin vertical-center-3 {
+  margin: auto;
+  @include position(absolute, 50%, null, null, 50%);
+  @include prefix(transform, translate(-50%,-50%));
+}
+
+// This also doesn't require any width or height, but it requires some extra markup.
+// It works in almost all browsers (even IE7)
+// usage:
+// .wrapper {
+//    @include vertical-center-4;
+// }
+//
+// <div class="wrapper">
+//     <div class="content">
+//           <div class="box">
+//                <!-- content -->
+//           </div>
+//     </div>
+// </div>
+
+@mixin vertical-center-4 {
+  display: table;
+  height: 100%;
+
+  > * {
+    display: table-cell;
+    vertical-align: middle;
+
+    > * { margin: 0 auto; }
+  }
+}

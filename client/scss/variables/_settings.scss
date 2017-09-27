@@ -1,0 +1,10 @@
+// +-------------------------------------------------------------------------+
+// | Settings                                                                |
+// +-------------------------------------------------------------------------+
+
+$rem-with-px-fallback: true !default; // IE9 & Below needs PX fallback
+
+$base-font-size: 16px !default; // global base font-size
+$line-height: 1.5rem !default; // global line-height
+
+$prefix: -webkit-, -moz-, -ms- !default; // set your browser support here

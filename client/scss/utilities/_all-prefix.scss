@@ -1,0 +1,12 @@
+// mixin for prefixin'
+// usage: @include prefix(attribute, argument);
+
+@mixin prefix(
+  $attribute,
+  $value
+) {
+  @each $vendor in $prefix {
+    #{$vendor}#{$attribute}: #{$value};
+  }
+  #{$attribute}: #{$value};
+}

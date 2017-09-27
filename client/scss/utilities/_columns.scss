@@ -1,0 +1,11 @@
+@mixin column-count(
+  $value
+) {
+  @include prefix(column-count, $value);
+}
+
+@mixin column-gap(
+  $value
+) {
+  @include prefix(column-gap, $value);
+}

@@ -1,0 +1,14 @@
+// mixin for hiding text
+// Use placeholder if not inside media querys
+
+@mixin ir {
+  border: 0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
+}
+
+%ir {
+  @include ir;
+}

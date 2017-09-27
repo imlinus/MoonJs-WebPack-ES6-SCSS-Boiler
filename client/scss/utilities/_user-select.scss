@@ -1,0 +1,11 @@
+// Mixin for user-select
+// use: none, text, all or element
+
+@mixin user-select(
+  $value: none
+) {
+  -webkit-touch-callout: $value;
+  @include prefix(user-select, $value);
+}
+
+%user-select-none { @include user-select(none); }

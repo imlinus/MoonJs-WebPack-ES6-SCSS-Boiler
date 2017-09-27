@@ -1,0 +1,63 @@
+// +-------------------------------------------------------------------------+
+// | Buttons                                                                 |
+// +-------------------------------------------------------------------------+
+
+button,
+.btn,
+[type=submit] {
+  margin: 0;
+  color: #f5f5f5;
+  background: $main-color;
+  border: 1px solid darken($main-color, 5%);
+  transition: $transition-all;
+  font-family: $main-font;
+  font-weight: 600;
+  @extend %inline-block;
+  @include rem(border-radius, 2rem);
+  @include padding(1rem 3rem);
+  @include font-size(1rem);
+
+  &:hover {
+    color: #f5f5f5;
+    background: $secondary-color;
+    border: 1px solid darken($secondary-color, 5%);
+    cursor: pointer;
+  }
+
+  &:focus { outline: 0; }
+
+  &:disabled, [disabled] {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+
+  &.outline {
+    color: $main-color;
+    background: none;
+    border: 1px solid darken($main-color, 5%);
+
+    &:hover {
+      background: none;
+      border: 1px solid $secondary-color;
+      color: darken($secondary-color, 5%);
+    }
+  }
+
+  &.success {
+    background: $green-2;
+    border: 1px solid darken($green-2, 5%);
+    &:hover { background: $green-3; }
+  }
+
+  &.alert {
+    background: $red-1;
+    border: 1px solid darken($red-1, 5%);
+    &:hover { background: $red-2; }
+  }
+
+  &.warning {
+    background: $orange-1;
+    border: 1px solid darken($orange-1, 5%);
+    &:hover { background: lighten($orange-1, 10%); }
+  }
+}

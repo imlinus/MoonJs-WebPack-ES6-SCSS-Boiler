@@ -1,0 +1,56 @@
+// +-------------------------------------------------------------------------+
+// | Headings                                                                |
+// +-------------------------------------------------------------------------+
+
+h1, h2, h3, h4, h5, h6 {
+  font: {
+    weight: 400;
+    family: $secondary-font;
+  }
+  line-height: 1.25;
+  @include margin(0 0 1rem 0);
+}
+
+h1 {
+  @include font-size(5rem);
+
+  @include respond(tablet) {
+    @include font-size(4rem);
+  }
+}
+
+h2 {
+  @include font-size(4.2rem);
+
+  @include respond(tablet) {
+    @include font-size(3.5rem);
+  }
+}
+
+h3 {
+  @include font-size(3.6rem);
+
+  @include respond(tablet) {
+    @include font-size(3rem);
+  }
+}
+
+h4 {
+  @include font-size(3rem);
+
+  @include respond(tablet) {
+    @include font-size(2.6rem);
+  }
+}
+
+h5 {
+  @include font-size(2.4rem);
+
+  @include respond(tablet) {
+    @include font-size(2.2rem);
+  }
+}
+
+h6 {
+  @include font-size(1.8rem);
+}

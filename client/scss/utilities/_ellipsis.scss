@@ -1,0 +1,12 @@
+// Mixin for creating a ellipsis (...) when text is too long.
+// Only call the mixin within media querys, otherwise use the placeholder!
+
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+%ellipsis {
+  @include ellipsis;
+}

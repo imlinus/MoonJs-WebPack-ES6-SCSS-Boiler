@@ -1,0 +1,19 @@
+// +-------------------------------------------------------------------------+
+// | Lists                                                                   |
+// +-------------------------------------------------------------------------+
+
+ul, ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-position: inside;
+
+  ul, ol {
+    font-size: 95%;
+    @include margin(1rem 0 1rem 2rem);
+  }
+}
+
+li {
+  @include margin-bottom(1rem);
+}

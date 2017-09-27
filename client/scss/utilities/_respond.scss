@@ -1,0 +1,73 @@
+// Simple mixin when calling different viewports
+// Remember - you can't extend within media-querys
+//
+// basic usage:
+// @include respond(retina) {
+//   background-image: url('path/to/retina/image.png');
+//   background-size: 100px 50px;
+// }
+
+@mixin respond(
+  $media
+) {
+  @if $media == desktop {
+    @media #{$is-desktop} { @content; }
+  }
+
+  @else if $media == tablet {
+    @media #{$is-tablet} { @content; }
+  }
+
+  @else if $media == phablet {
+    @media #{$is-phablet}  { @content; }
+  }
+
+  @else if $media == mobile {
+    @media #{$is-mobile}  { @content; }
+  }
+
+  @else if $media == retina {
+    @media #{$is-retina}  { @content; }
+  }
+
+  @else if $media == print {
+    @media #{$is-print} { @content; }
+  }
+
+  @else if $media == portrait {
+    @media #{$is-portrait} { @content; }
+  }
+
+  @else if $media == landscape {
+    @media #{$is-landscape} { @content; }
+  }
+
+  @else if $media == iphone-five {
+    @media #{$is-iphone-5} { @content; }
+  }
+
+   @else if $media == under-iphone-five {
+    @media #{$is-under-iphone-5} { @content; }
+  }
+}
+
+@mixin mq(
+  $min-width,
+  $max-width
+) {
+  @if $min-width and $max-width {
+    @media screen and (min-width: $min-width) and (max-width: $max-width) {
+      @content;
+    }
+  }
+  @else if $min-width and not $max-width {
+    @media screen and (min-width: $min-width) {
+      @content;
+    }
+  }
+  @else if $max-width and not $min-width {
+    @media screen and (max-width: $max-width) {
+      @content;
+    }
+  }
+}

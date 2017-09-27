@@ -1,0 +1,8 @@
+.app {
+  position: relative;
+  @include margin($header-height 0 0 0);
+
+  .content {
+    @include padding(40px);
+  }
+}

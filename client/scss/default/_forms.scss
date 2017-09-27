@@ -1,0 +1,48 @@
+// +-------------------------------------------------------------------------+
+// | Forms                                                                   |
+// +-------------------------------------------------------------------------+
+
+form {
+  fieldset {
+    border: 0;
+    margin: 0;
+    @include padding(0 0 1.5rem 0);
+
+    &:last-child { padding: 0; }
+
+    label {
+      font-weight: 600;
+      @include padding(0 0 0.5rem 0);
+      @extend %inline-block;
+    }
+  }
+}
+
+input[type=text], input[type=password], input[type=email], input[type=search], input[type=number], input[type=file], input[type=tel], input[type=url], select, textarea, textarea[type=text] {
+  background: $gray-1;
+  border: 1px solid $gray-2;
+  box-sizing: border-box;
+  transition: $transition-all;
+  font-family: $main-font;
+  font-weight: 600;
+  margin: 0;
+  width: 100%;
+  @include prefix(border-radius, 2px);
+  @include prefix(appearance, none);
+  @include height(45px);
+  @include padding(1rem 1.5rem);
+  @include font-size(1rem);
+
+  &:hover {
+    border: 1px solid $secondary-color;
+  }
+
+  &:focus {
+    border: 1px solid $main-color;
+    outline: none;
+  }
+}
+
+textarea, textarea[type=text] {
+  @include min-height(10rem);
+}

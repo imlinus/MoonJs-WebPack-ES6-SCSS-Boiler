@@ -1,0 +1,14 @@
+// Alpha mixin with 3 pre-set placeholders
+// Basic usage: @include alpha(1); alt. @extend %alpha-100;
+
+@mixin alpha($value: 0) {
+  $ie-alpha: $value * 100;
+
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie-alpha})";
+  filter: alpha(opacity=#{$ie-alpha});
+  opacity: $value;
+}
+
+%alpha-0 	 { @include alpha(0); 	}
+%alpha-50  { @include alpha(0.5); }
+%alpha-100 { @include alpha(1); 	}

@@ -1,0 +1,57 @@
+// +-------------------------------------------------------------------------+
+// | Misc                                                                    |
+// +-------------------------------------------------------------------------+
+
+pre {
+  @include margin(0 0 2rem 0);
+
+  > code {
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    @include padding(1rem 1.5rem);
+  }
+}
+
+code {
+  background: #F1F1F1;
+  border: 1px solid #dbdbdb;
+  font-family: "Consolas", "Monaco", "Menlo", monospace;
+  white-space: nowrap;
+  @include prefix(border-radius, 4px);
+  @include font-size(1.3rem);
+  @include padding(0.25rem 0.5rem);
+  @include margin(0 0.25rem);
+}
+
+
+blockquote {
+  background: white;
+  border: 0;
+  margin: 0;
+	text-align: center;
+	position: relative;
+	quotes: "\201C""\201D""\2018""\2019";
+  @include padding-top(2rem);
+
+  &:before {
+    content: '\201C';
+    @include prefix(transform, translateX(-50%));
+    @include prefix(border-radius, 50%);
+    @include font-size(3rem);
+    @include position(absolute, 0, null, null, 50%);
+  }
+
+  &:after {
+    content: '';
+    background: linear-gradient(to right, transparent, #CCC, transparent);
+    width: 100%;
+    height: 1px;
+    @include position(absolute, 10px, null, null, 0);
+  }
+
+  p {
+    margin: 0;
+    @include padding(1rem);
+  }
+}

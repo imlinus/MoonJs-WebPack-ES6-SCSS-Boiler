@@ -1,0 +1,141 @@
+// REM helper - https://github.com/ry5n/rem
+$px-per-rem: $base-font-size / 1rem;
+$browser-default-font-size: 16px;
+
+@function convert-length($length, $to-unit, $from-context: $base-font-size, $to-context: $from-context) {
+  $from-unit: unit($length);
+
+  @if $from-unit == $to-unit { @return $length; }
+  @if unit($from-context) != 'px' { @warn "Paremeter $from-context must resolve to a value in pixel units."; }
+  @if unit($to-context) != 'px' { @warn "Parameter $to-context must resolve to a value in pixel units."; }
+
+  $px-per-in: 96px / 1in;
+  $px-per-mm: 96px / 25.4mm;
+  $px-per-cm: 96px / 2.54cm;
+  $px-per-pt: 4px / 3pt;
+  $px-per-pc: 16px / 1pc;
+
+  $px-per-from-unit: 1;
+  $px-per-to-unit: 1;
+
+  @if $from-unit != 'px' {
+    @if      $from-unit == 'em'  { $px-per-from-unit: $from-context / 1em }
+    @else if $from-unit == 'rem' { $px-per-from-unit: $base-font-size / 1rem }
+    @else if $from-unit == '%'   { $px-per-from-unit: $from-context / 100% }
+    @else if $from-unit == 'ex'  { $px-per-from-unit: $from-context / 2ex }
+    @else if $from-unit == 'in'  { $px-per-from-unit: $px-per-in }
+    @else if $from-unit == 'mm'  { $px-per-from-unit: $px-per-mm }
+    @else if $from-unit == 'cm'  { $px-per-from-unit: $px-per-cm }
+    @else if $from-unit == 'pt'  { $px-per-from-unit: $px-per-pt }
+    @else if $from-unit == 'pc'  { $px-per-from-unit: $px-per-pc }
+    @else if $to-unit == 'ch' or $to-unit == 'vw' or $to-unit == 'vh' or $to-unit == 'vmin' {
+      @warn "#{$from-unit} units can't be reliably converted; Returning original value.";
+      @return $length;
+    }
+    @else {
+      @warn "#{$from-unit} is an unknown length unit. Returning original value.";
+      @return $length;
+    }
+  }
+
+  @if $to-unit != 'px' {
+    @if      $to-unit == 'em'  { $px-per-to-unit: $to-context / 1em }
+    @else if $to-unit == 'rem' { $px-per-to-unit: $base-font-size / 1rem }
+    @else if $to-unit == '%'   { $px-per-to-unit: $to-context / 100% }
+    @else if $to-unit == 'ex'  { $px-per-to-unit: $to-context / 2ex }
+    @else if $to-unit == 'in'  { $px-per-to-unit: $px-per-in }
+    @else if $to-unit == 'mm'  { $px-per-to-unit: $px-per-mm }
+    @else if $to-unit == 'cm'  { $px-per-to-unit: $px-per-cm }
+    @else if $to-unit == 'pt'  { $px-per-to-unit: $px-per-pt }
+    @else if $to-unit == 'pc'  { $px-per-to-unit: $px-per-px }
+    @else if $to-unit == 'ch' or $to-unit == 'vw' or $to-unit == 'vh' or $to-unit == 'vmin' {
+      @warn "#{$to-unit} units can't be reliably converted; Returning original value.";
+      @return $length;
+    }
+    @else {
+      @warn "#{$to-unit} is an unknown length unit. Returning original value.";
+      @return $length;
+    }
+  }
+  @return $length * $px-per-from-unit / $px-per-to-unit;
+}
+
+@mixin rem($property, $values, $use-px-fallback: $rem-with-px-fallback) {
+  $px-values: ();
+  $rem-values: ();
+
+  @if type-of($values) != 'list' {
+    $values: join((), $values);
+  }
+
+  @each $value in $values {
+    @if type-of($value) == number and not unitless($value) and (unit($value) == px or unit($value) == rem) {
+      @if unit($value) == px {
+        $px-values: join($px-values, round($value));
+        $rem-values: join($rem-values, convert-length($value, rem));
+      }
+      @else {
+        $px-values: join($px-values, round(convert-length($value, px)));
+        $rem-values: join($rem-values, $value);
+      }
+    }
+    @else {
+      $px-values: join($px-values, $value);
+      $rem-values: join($rem-values, $value);
+    }
+  }
+
+  @if $use-px-fallback {
+    #{$property}: $px-values;
+  }
+  #{$property}: $rem-values;
+}
+
+// PX to REM
+@function rem-calc($size) {
+  @return $size / $px-per-rem;
+}
+
+// REM to PX
+@function px-calc($size) {
+  @return $size * $px-per-rem;
+}
+
+@mixin line-height($size) {
+  @if $rem-with-px-fallback {
+    line-height: $size;
+  }
+  line-height: px-calc($size);
+}
+
+@mixin font-size($size) {
+  @if $rem-with-px-fallback {
+    font-size: $size;
+  }
+  font-size: px-calc($size);
+}
+
+// Padding
+@mixin padding($args) { @include rem(padding, $args); }
+@mixin padding-top($args) { @include rem(padding-top, $args); }
+@mixin padding-right($args) { @include rem(padding-right, $args); }
+@mixin padding-bottom($args) { @include rem(padding-bottom, $args); }
+@mixin padding-left($args) { @include rem(padding-left, $args); }
+
+// Margin
+@mixin margin($args) { @include rem(margin, $args); }
+@mixin margin-top($args) { @include rem(margin-top, $args); }
+@mixin margin-right($args) { @include rem(margin-right, $args); }
+@mixin margin-bottom($args) { @include rem(margin-bottom, $args); }
+@mixin margin-left($args) { @include rem(margin-left, $args); }
+
+// height & width's
+@mixin height($args) {  @include rem(height, $args); }
+@mixin width($args) { @include rem(width, $args); }
+@mixin min-height($args) { @include rem(min-height, $args); }
+@mixin max-height($args) { @include rem(max-height, $args); }
+@mixin min-width($args) { @include rem(min-width, $args); }
+@mixin max-width($args) { @include rem(max-width, $args); }
+
+// Misc
+@mixin text-indent($args) { @include rem(text-indent, $args); }

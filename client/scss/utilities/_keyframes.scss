@@ -1,0 +1,20 @@
+// Mixin for keyframes
+// basic usage:
+// @include keyframes(name) {
+//   0% { background: yellow; }
+//   100% { background: blue; }
+// }
+
+@mixin keyframes(
+  $name
+) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
