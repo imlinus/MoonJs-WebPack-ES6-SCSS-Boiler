@@ -1,7 +1,0 @@
-// Mixin for calling an transition
-// basic usage:
-// @include transition(all .25s ease-in-out);
-
-@mixin transition($transition...) {
-  @include prefix(transition, $transition...);
-}

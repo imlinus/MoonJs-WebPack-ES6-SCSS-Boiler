@@ -1,9 +1,0 @@
-// Mixin for calling an animation
-// basic usage:
-// @include animation(animation .5s ease-in-out);
-
-@mixin animation(
-  $animation...
-) {
-  @include prefix(animation, $animation...);
-}
