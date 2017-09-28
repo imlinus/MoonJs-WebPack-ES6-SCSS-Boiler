@@ -7,8 +7,8 @@ This is simply a example of an boilerplate for quickly getting started using Moo
 - Development: `npm run dev`
 - Production: `npm run prod`
 
-###GL & HF
+### GL & HF
 Shoutout to [Kabir](https://github.com/kbrsh) for creating [Moon](https://github.com/kbrsh/moon)
 
-####%Contributors
+#### Contributors
 - [ghstahl](https://github.com/ghstahl) - webpack.dev/prod.config.js
