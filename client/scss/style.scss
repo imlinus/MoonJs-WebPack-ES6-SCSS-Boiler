@@ -1,3 +1,5 @@
+$topbar-height: 3.75rem;
+
 *, *:before, *:after {
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
@@ -10,24 +12,22 @@ html, body {
   padding: 0;
 }
 
-html {
-  font-size: 100%;
-}
+html { font-size: 100%; }
 
 body {
   line-height: 1.5;
-  font-weight: 400;
   font-family: sans-serif;
   font-size: 1rem;
+  font-weight: 400;
   color: #2c3e50;
 }
 
 
 /* Top bar */
 .top-bar {
-  background: #c0392b;
+  background: #c0392b; /* Red */
   z-index: 1;
-  height: 60px;
+  height: $topbar-height;
   position: fixed;
   top: 0; right: 0; left: 0;
 
@@ -35,12 +35,14 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 1.5rem;
+    padding: 0;
   }
 }
 
 /* Logo */
 .logo {
+  padding: 0 0.625rem;
+
   a, a:visited {
     color: white;
     display: block;
@@ -50,7 +52,7 @@ body {
   h1 {
     color: white;
     margin: 0;
-    line-height: 60px;
+    line-height: $topbar-height;
     font-size: 1.75rem;
   }
 }
@@ -62,12 +64,12 @@ body {
   display: flex;
   flex-direction: row;
   list-style-type: none;
-  height: 60px;
+  height: $topbar-height;
 
   li {
     margin: 0;
-    line-height: 60px;
-    transition: all 0.25s cubic-bezier(1, 0, 0, 1);
+    line-height: $topbar-height;
+    transition: all 0.25s cubic-bezier(1, 0, 0, 1); /* InOutExpo */
 
     a, a:visited {
       display: flex;
@@ -85,7 +87,7 @@ body {
 /* App */
 #app {
   position: relative;
-  margin-top: 60px;
+  margin-top: $topbar-height;
 
   .content {
     padding: 1.5rem;
