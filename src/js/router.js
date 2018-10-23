@@ -1,13 +1,14 @@
 import Moon from 'moonjs'
 import MoonRouter from 'moon-router'
+import { home, contact, notFound } from './views/'
 
 Moon.use(MoonRouter)
 
 export const router = new MoonRouter({
   default: '/',
   map: {
-    '/': 'Home',
-    '/contact': 'Contact',
-    '/*': 'NotFound'
+    '/': 'home',
+    '/contact': 'contact',
+    '/*': 'notFound'
   }
 })

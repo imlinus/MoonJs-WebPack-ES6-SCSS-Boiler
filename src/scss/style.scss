@@ -24,8 +24,8 @@ body {
 
 
 /* Top bar */
-.top-bar {
-  background: #c0392b; /* Red */
+.topbar {
+  background: #c0392b;
   z-index: 1;
   height: $topbar-height;
   position: fixed;
@@ -85,7 +85,7 @@ body {
 }
 
 /* App */
-#app {
+.app {
   position: relative;
   margin-top: $topbar-height;
 
