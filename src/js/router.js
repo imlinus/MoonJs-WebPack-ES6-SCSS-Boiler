@@ -4,7 +4,7 @@ import { home, contact, notFound } from './views/'
 
 Moon.use(MoonRouter)
 
-export const router = new MoonRouter({
+const router = new MoonRouter({
   default: '/',
   map: {
     '/': 'home',
@@ -12,3 +12,5 @@ export const router = new MoonRouter({
     '/*': 'notFound'
   }
 })
+
+export default router
